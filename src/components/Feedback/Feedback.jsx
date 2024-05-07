@@ -1,6 +1,6 @@
 import css from "./Feedback.module.css"
 
-export default function Feedback({ rating: { good, neutral, bad }, totalFeedback }) {
+export default function Feedback({ rating: { good, neutral, bad }, totalFeedback, percentFeedback }) {
     return (
         <div  className={css.feedbackSection}>
         <ul>
@@ -8,7 +8,7 @@ export default function Feedback({ rating: { good, neutral, bad }, totalFeedback
             <li>Neutral: {neutral}</li>
             <li>Bad: {bad}</li>
             <li>Total: {totalFeedback}</li>
-            <li>Postive: {Math.round((good / totalFeedback) * 100)}%</li>
+            <li>Postive: {percentFeedback}%</li>
         </ul>
         </div>
     )

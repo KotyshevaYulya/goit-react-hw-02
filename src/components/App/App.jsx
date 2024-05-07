@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Description from "../Description/Description";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
+import Notification from "../Notification/Notification";
 
 
 
@@ -40,11 +41,13 @@ export default function App() {
 
     const totalFeedback = rating.good + rating.neutral + rating.bad;
 
+    const percentFeedback = Math.round((rating.good / totalFeedback) * 100);
+
     return (
         <div className={css.AppContainer}>
             <Description />
             <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} handleReset={ handleReset } />
-            {totalFeedback > 0 ? (<Feedback rating={rating} totalFeedback={totalFeedback}/>):(<p>No feedback yet</p> )}
+            {totalFeedback > 0 ? (<Feedback rating={rating} totalFeedback={totalFeedback} percentFeedback={percentFeedback} />):(<Notification />)}
         </div>
     )
 }
